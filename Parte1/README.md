@@ -12,3 +12,5 @@ Correr los siguentes comandos en la carpeta donde se encuentre el archivo docker
 <code>docker logs db</code>
 </li>
 </ol>
+
+Por ultimo importar el siguiente archivo <a href="https://github.com/jsebastianherrera/Microservices/blob/main/Parte1/API.postman_collection.json">Postman file json</a> 
