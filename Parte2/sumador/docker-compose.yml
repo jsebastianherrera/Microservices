@@ -1,0 +1,176 @@
+version: "3.6"
+networks:
+  workshop:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+          gateway: 172.30.0.1
+services:
+  db:
+    image: juansehgu/dbmaria:latest
+    container_name: db
+    ports:
+      - "3306:3306"
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.2
+  jerseyms:
+    container_name: jersey
+    image: juansehgu/jersey:latest
+    environment:
+      SERVER_IP: "172.30.0.3"
+      DB_IP: "172.30.0.2"
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.3
+  eureka:
+    container_name: eureka
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./eurekaserver/target/eurekaserver-0.0.1-SNAPSHOT.jar:/app/eureka.jar
+    working_dir: /app/
+    ports:
+      - "8761:8761"
+    command: java -jar eureka.jar
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.4
+  sumador1:
+    container_name: sumador1
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./sumador/target/sumador-0.0.1-SNAPSHOT.jar:/app/sumador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9999:9999"
+    command: java -jar sumador.jar --server.port=9999 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.5
+  sumador2:
+    container_name: sumador2
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./sumador/target/sumador-0.0.1-SNAPSHOT.jar:/app/sumador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9998:9998"
+    command: java -jar sumador.jar --server.port=9998 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.6
+  restador1:
+    container_name: restador1
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./restador/target/restador-0.0.1-SNAPSHOT.jar:/app/restador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9997:9997"
+    command: java -jar restador.jar --server.port=9997 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.7
+  restador2:
+    container_name: restador2
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./restador/target/restador-0.0.1-SNAPSHOT.jar:/app/restador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9996:9996"
+    command: java -jar restador.jar --server.port=9996 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.8
+  multiplicador1:
+    container_name: multiplicador1
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./multiplicador/target/multiplicador-0.0.1-SNAPSHOT.jar:/app/multiplicador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9995:9995"
+    command: java -jar multiplicador.jar --server.port=9995 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.9
+  multiplicador2:
+    container_name: multiplicador2
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./multiplicador/target/multiplicador-0.0.1-SNAPSHOT.jar:/app/multiplicador.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9994:9994"
+    command: java -jar multiplicador.jar --server.port=9994 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.10
+  division1:
+    container_name: division1
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./divisor/target/divisor-0.0.1-SNAPSHOT.jar:/app/divisor.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9993:9993"
+    command: java -jar divisor.jar --server.port=9993 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.11
+  division2:
+    container_name: division2
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./divisor/target/divisor-0.0.1-SNAPSHOT.jar:/app/divisor.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+    ports:
+      - "9992:9992"
+    command: java -jar divisor.jar --server.port=9992 --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.12
+
+  calculadora:
+    container_name: calculadora
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./calculadora/target/calculadora-0.0.1-SNAPSHOT.jar:/app/calculadora.jar
+    working_dir: /app/
+    depends_on:
+      - eureka
+      - sumador1
+      - sumador2
+      - restador1
+      - restador2
+      - multiplicador1
+      - multiplicador2
+      - division1
+      - division2
+    ports:
+      - "8888:8888"
+    command: java -jar calculadora.jar --registry.host=172.30.0.4
+    networks:
+      workshop:
+        ipv4_address: 172.30.0.20
