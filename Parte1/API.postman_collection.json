@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "73df1325-5bfd-460f-8277-1ac3c7e818eb",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20026755"
+	},
+	"item": [
+		{
+			"name": "createPaseo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"origen\": \"Villavicencio\",\n    \"destino\": \"Casanare\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/paseos/paseo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paseos",
+						"paseo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPaseos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/paseos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paseos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePaseos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/paseos/paseo/6?origen=Buenos aires&destino=Montevideo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paseos",
+						"paseo",
+						"6"
+					],
+					"query": [
+						{
+							"key": "origen",
+							"value": "Buenos aires"
+						},
+						{
+							"key": "destino",
+							"value": "Montevideo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePaseo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/paseos/paseo/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paseos",
+						"paseo",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

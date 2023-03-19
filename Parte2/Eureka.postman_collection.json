@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "510945aa-e8a4-4bf4-8c55-a00e847f85bd",
+		"name": "Eureka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20026755"
+	},
+	"item": [
+		{
+			"name": "calculadoraSuma",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/calculadora/suma?a=6&b=3&user=rafael",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"calculadora",
+						"suma"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "6"
+						},
+						{
+							"key": "b",
+							"value": "3"
+						},
+						{
+							"key": "user",
+							"value": "rafael"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculadoraResta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/calculadora/resta?a=10&b=5&user=julian",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"calculadora",
+						"resta"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "10"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						},
+						{
+							"key": "user",
+							"value": "julian"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculadoraMultiplicar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/calculadora/multiplicar?a=5&b=5&user=perez",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"calculadora",
+						"multiplicar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "5"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						},
+						{
+							"key": "user",
+							"value": "perez"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculadoraDividir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/calculadora/dividir?a=10&b=5&user=julian",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"calculadora",
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "10"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						},
+						{
+							"key": "user",
+							"value": "julian"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculadoraConsulta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/calculadora/consulta?operacion=dividir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"calculadora",
+						"consulta"
+					],
+					"query": [
+						{
+							"key": "operacion",
+							"value": "dividir"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
