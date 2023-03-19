@@ -7,3 +7,4 @@ Una vez las carpetas target exista para cada proyecto volver a la carpeta donde 
 <br> y <br>
 <code>docker-compose up -d</code>
 
+Por ultimo importar el siguiente archivo <a href="https://github.com/jsebastianherrera/Microservices/blob/main/Parte2/Eureka.postman_collection.json">Postman file json</a>  en <strong>POSTMAN</strong>.
