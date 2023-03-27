@@ -1,6 +1,6 @@
 <h1>Taller 2</h1>
 Correr para cada carpeta de la parte 2 el siguente comando:
-<code>mvn clean install</code>
+<code>mvn clean install -DskipTests</code>
 Una vez las carpetas target exista para cada proyecto volver a la carpeta donde se encuentra el archivo docker-compose de la parte 2 para montar el archivo docker-compose.
 
 <code>docker-compose build</code>
